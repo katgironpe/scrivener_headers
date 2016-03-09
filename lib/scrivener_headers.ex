@@ -1,2 +1,0 @@
-defmodule ScrivenerHeaders do
-end
