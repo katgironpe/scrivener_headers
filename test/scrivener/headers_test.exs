@@ -4,9 +4,9 @@ defmodule Scrivener.HeadersTests do
   alias Plug.Conn
   alias Scrivener.{Headers, Page}
 
-  defp paginated_headers(page) do
+  defp paginated_headers(page, port \\ 80) do
     conn = %Conn{host: "www.example.com",
-                 port: 80,
+                 port: port,
                  query_string: "foo=bar",
                  request_path: "/test",
                  scheme: :http}
@@ -37,5 +37,12 @@ defmodule Scrivener.HeadersTests do
     headers = paginated_headers(page)
 
     refute headers["Link"] =~ ~s(rel="next")
+  end
+
+  test "includes ports other than 80 and 443" do
+    page = %Page{page_number: 5, page_size: 10, total_pages: 5, total_entries: 50}
+    headers = paginated_headers(page, 1337)
+
+    assert headers["Link"] =~ ~s(<http://www.example.com:1337/test?foo=bar&page=1>)
   end
 end
