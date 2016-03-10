@@ -1,6 +1,6 @@
 # Scrivener.Headers
 
-[![Build Status][travis-img]][travis] [![Hex Version][hex-img]][hex] [![License][license-img]][license]
+[![Build Status][travis-img]][travis] [![Hex Version][hex-img]][hex] [![Hex docs][hexdocs-img]][hexdocs] [![License][license-img]][license]
 
 [travis-img]: https://travis-ci.org/doomspork/scrivener_headers.png?branch=master
 [travis]: https://travis-ci.org/doomspork/scrivener_headers
@@ -8,6 +8,11 @@
 [hex]: https://hex.pm/packages/scrivener_headers
 [license-img]: http://img.shields.io/badge/license-MIT-brightgreen.svg
 [license]: http://opensource.org/licenses/MIT
+[hexdocs-img]: http://img.shields.io/badge/hex-docs-green.svg?style=flat
+[hexdocs]: https://hexdocs.pm/scrivener_headers/Scrivener.Headers.html
+
+
+
 
 Helpers for paginating API responses with [Scrivener](https://github.com/drewolson/scrivener) and HTTP headers.  Implements [RFC-5988](https://mnot.github.io/I-D/rfc5988bis/), the proposed standard for Web linking.
 
