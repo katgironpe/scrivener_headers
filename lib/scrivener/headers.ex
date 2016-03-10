@@ -1,6 +1,20 @@
 defmodule Scrivener.Headers do
   @moduledoc """
-  Pagination with headers using RFC 5988 web linking.
+  Helpers for paginating API responses with [Scrivener](https://github.com/drewolson/scrivener) and HTTP headers. Implements [RFC-5988](https://mnot.github.io/I-D/rfc5988bis/), the proposed standard for Web linking.
+
+  Use `paginate/2` to set the pagination headers:
+
+      def index(conn, params) do
+        page = MyApp.Person
+               |> where([p], p.age > 30)
+               |> order_by([p], desc: p.age)
+               |> preload(:friends)
+               |> MyApp.Repo.paginate(params)
+
+        conn
+        |> Scrivener.Headers.paginate(page)
+        |> render("index.json", people: page.entries)
+      end
   """
 
   import Plug.Conn
@@ -10,7 +24,7 @@ defmodule Scrivener.Headers do
   @rels ~w(first last next prev)
 
   @doc """
-  Adds pagination headers to conn for a page.
+  Add HTTP headers for a `Scrivener.Page`.
   """
   @spec paginate(Plug.Conn.t, Scrivener.Page.t) :: Plug.Conn.t
   def paginate(conn, page) do
