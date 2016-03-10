@@ -3,10 +3,12 @@ defmodule Scrivener.Headers.Mixfile do
 
   def project do
     [app: :scrivener_headers,
-     version: "0.0.1",
+     version: "1.0.0",
      elixir: "~> 1.2",
      package: package,
-     description: "",
+     description: """
+     Helpers for paginating API responses with Scrivener and HTTP headers
+     """,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps]
