@@ -30,8 +30,8 @@ defmodule Scrivener.Headers do
   def paginate(conn, page) do
     conn
     |> put_link_header(page)
-    |> put_resp_header("Total", Integer.to_string(page.total_entries))
-    |> put_resp_header("Per-Page", Integer.to_string(page.page_size))
+    |> put_resp_header("total", Integer.to_string(page.total_entries))
+    |> put_resp_header("per-page", Integer.to_string(page.page_size))
   end
 
   defp put_link_header(conn, page) do
@@ -39,7 +39,7 @@ defmodule Scrivener.Headers do
            |> pages(page)
            |> Enum.join(", ")
 
-    put_resp_header(conn, "Link", link)
+    put_resp_header(conn, "link", link)
   end
 
   defp pages(conn, page) do
