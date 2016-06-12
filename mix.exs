@@ -27,7 +27,7 @@ defmodule Scrivener.Headers.Mixfile do
 
   defp deps do
     [{:plug, "~> 1.1", optional: true},
-     {:scrivener, "~> 1.1"},
+     {:scrivener, github: "katgironpe/scrivener"},
      {:earmark, "~> 0.1", only: :dev},
      {:ex_doc, "~> 0.11", only: :dev}]
   end
